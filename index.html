@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Joao Aboim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <header class="hero">
+            <div class="hero-avatar">JA</div>
+            <h1>Joao Aboim</h1>
+            <p class="tagline">Software Developer · Full-Stack · Python &amp; TypeScript</p>
+            <div class="links">
+                <a href="https://github.com/Aboim" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/joão-aboim" target="_blank">LinkedIn</a>
+                <a href="mailto:joao.aboim@gmail.com">Email</a>
+                <a href="#" class="btn-push" id="btnPush" onclick="pushAll(); return false;" title="Git push em todos os projectos">Push All</a>
+            </div>
+            <div id="pushMsg" class="push-msg" style="display:none;"></div>
+            </div>
+        </header>
+
+        <!-- Projects Section -->
+        <h2 class="section-title">Projectos <span class="count" id="projCount"></span></h2>
+
+        <div class="filters" id="filters">
+            <button class="active" data-filter="todos">Todos</button>
+            <button data-filter="web">Web</button>
+            <button data-filter="desktop">Desktop</button>
+            <button data-filter="utility">Utilitarios</button>
+            <button data-filter="mobile">Mobile</button>
+        </div>
+
+        <div class="grid" id="grid"></div>
+
+        <footer class="footer">
+            Feito com <span style="color:#FFD700">empenho</span> ·  2026
+        </footer>
+    </div>
+
+    <script>
+        const projectos = [
+            {
+                nome: "Barbearia Portuguesa",
+                descricao: "App web full-stack para gestao de barbearia com agendamento, barbeiros, servicos e lembretes SMS via Twilio.",
+                stack: "React · Express · Tailwind CSS · SQLite",
+                tipo: "web",
+                icone: "💈",
+                cor: "#3B82F6",
+                link: "https://github.com/Aboim/barbearia-portuguesa",
+                tags: ["web", "fullstack"]
+            },
+            {
+                nome: "Combustivel",
+                descricao: "Directorio nacional de precos de combustiveis e carregadores eletricos com mapa Leaflet e filtros avancados.",
+                stack: "Vanilla JS · Python · Leaflet.js · SQLite",
+                tipo: "web",
+                icone: "⛽",
+                cor: "#F59E0B",
+                link: "https://github.com/Aboim/combustivel",
+                tags: ["web", "backend"]
+            },
+            {
+                nome: "Conversor Excel JSON",
+                descricao: "Utilitario client-side para converter Excel (.xlsx/.csv/.ods) em JSON com suporte multi-sheet.",
+                stack: "HTML · CSS · JavaScript · SheetJS",
+                tipo: "utility",
+                icone: "🔄",
+                cor: "#22C55E",
+                link: "https://github.com/Aboim/conversor-excel-json",
+                tags: ["utility", "web"]
+            },
+            {
+                nome: "Dashboard Unificado",
+                descricao: "Hub central para todos os projectos pessoais. Lanca cada app com um clique e mostra estatisticas rapidas.",
+                stack: "Python · Flet",
+                tipo: "desktop",
+                icone: "📊",
+                cor: "#FFD700",
+                link: "https://github.com/Aboim/dashboard-unificado",
+                tags: ["desktop"]
+            },
+            {
+                nome: "EuroMilhoes",
+                descricao: "Analise e previsao do Euromilhoes com gerador inteligente de chaves baseado em estatisticas.",
+                stack: "Python · Flet · pandas · BeautifulSoup",
+                tipo: "desktop",
+                icone: "🎰",
+                cor: "#FFD700",
+                link: "https://github.com/Aboim/euromilhoes",
+                tags: ["desktop", "data"]
+            },
+            {
+                nome: "FinTrack-AI",
+                descricao: "Gestor de financas pessoais com insights IA via Google Gemini. Cross-platform (Web, Desktop, Android).",
+                stack: "React · TypeScript · Electron · Capacitor",
+                tipo: "desktop",
+                icone: "💰",
+                cor: "#8B5CF6",
+                link: "https://github.com/Aboim/fintrack-ai",
+                tags: ["desktop", "web", "mobile"]
+            },
+            {
+                nome: "KINTO KMS",
+                descricao: "Dashboard de gestao de quilometragem para contratos KINTO com OCR, projecoes e export multiplos formatos.",
+                stack: "TypeScript · Electron · Tesseract.js · Chart.js",
+                tipo: "desktop",
+                icone: "🚗",
+                cor: "#06B6D4",
+                link: "https://github.com/Aboim/kinto-kms",
+                tags: ["desktop", "mobile"]
+            },
+            {
+                nome: "Lista de Compras",
+                descricao: "Listas de compras multiplas com categorizacao automatica, tracking de precos e suporte multi-idioma.",
+                stack: "Python · Flet · SQLite",
+                tipo: "desktop",
+                icone: "🛒",
+                cor: "#EC4899",
+                link: "https://github.com/Aboim/lista-compras",
+                tags: ["desktop", "mobile"]
+            },
+            {
+                nome: "Comparador Supermercado",
+                descricao: "Compara precos entre Continente, Pingo Doce, Auchan e outros. Detecta o supermercado mais barato para a tua lista.",
+                stack: "Python · Flet · SQLite",
+                tipo: "desktop",
+                icone: "🏪",
+                cor: "#FB923C",
+                link: "https://github.com/Aboim/comparador-supermercado",
+                tags: ["desktop"]
+            },
+            {
+                nome: "Stock Medicamentos",
+                descricao: "Gestao de stock de medicamentos com alertas de stock baixo, receita medica e build Android.",
+                stack: "Python · Flet · SQLite",
+                tipo: "desktop",
+                icone: "💊",
+                cor: "#EF4444",
+                link: "https://github.com/Aboim/stock-medicamentos",
+                tags: ["desktop", "mobile"]
+            }
+        ];
+
+        const grid = document.getElementById('grid');
+        const projCount = document.getElementById('projCount');
+        const filters = document.getElementById('filters');
+
+        function getTipoTag(tipo) {
+            const map = { web: 'tag-web', desktop: 'tag-desktop', utility: 'tag-utility', mobile: 'tag-mobile' };
+            return map[tipo] || 'tag-web';
+        }
+
+        function getTipoLabel(tipo) {
+            const map = { web: 'Web', desktop: 'Desktop', utility: 'Utilitario', mobile: 'Mobile' };
+            return map[tipo] || tipo;
+        }
+
+        function renderCards(filter) {
+            const filtrados = filter === 'todos'
+                ? projectos
+                : projectos.filter(p => p.tipo === filter || p.tags.includes(filter));
+
+            projCount.textContent = `(${filtrados.length})`;
+            grid.innerHTML = '';
+
+            filtrados.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${i * 50}ms`;
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-icon" style="background:${p.cor}22; color:${p.cor}">${p.icone}</div>
+                        <div class="card-info">
+                            <h3>${p.nome}</h3>
+                            <div class="stack">${p.stack}</div>
+                        </div>
+                    </div>
+                    <p>${p.descricao}</p>
+                    <div class="card-footer">
+                        <span class="tag ${getTipoTag(p.tipo)}">${getTipoLabel(p.tipo)}</span>
+                        ${p.tags.filter(t => t !== p.tipo).map(t => `<span class="tag tag-${t === 'mobile' ? 'mobile' : t === 'web' ? 'web' : t === 'data' ? 'utility' : 'desktop'}">${t}</span>`).join('')}
+                    </div>
+                    <div class="card-links">
+                        <a href="${p.link}" target="_blank">GitHub</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        filters.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                filters.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderCards(e.target.dataset.filter);
+            }
+        });
+
+        renderCards('todos');
+
+        async function pushAll() {
+            const btn = document.getElementById('btnPush');
+            const msg = document.getElementById('pushMsg');
+            btn.textContent = 'A fazer push...';
+            btn.style.pointerEvents = 'none';
+            msg.style.display = 'none';
+
+            try {
+                const res = await fetch('/push', { method: 'POST' });
+                const data = await res.json();
+                if (data.ok) {
+                    msg.innerHTML = 'Push concluido!';
+                    msg.className = 'push-msg success';
+                } else {
+                    msg.innerHTML = '<pre>' + (data.stderr || data.stdout || 'Erro desconhecido') + '</pre>';
+                    msg.className = 'push-msg error';
+                }
+            } catch (e) {
+                msg.textContent = 'Erro: servidor nao encontrado. Corre python server.py primeiro.';
+                msg.className = 'push-msg error';
+            }
+            msg.style.display = 'block';
+            btn.textContent = 'Push All';
+            btn.style.pointerEvents = 'auto';
+        }
+    </script>
+</body>
+</html>
