@@ -260,6 +260,7 @@ body {
 .tag-desktop { background: #1a3d2e; color: #4ADE80; }
 .tag-utility { background: #3d2e1a; color: #FBBF24; }
 .tag-mobile { background: #3d1a2e; color: #F472B6; }
+.tag-game { background: #2e1a3d; color: #C084FC; }
 
 .card-links {
     display: flex;

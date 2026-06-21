@@ -35,6 +35,7 @@
             <button data-filter="desktop">Desktop</button>
             <button data-filter="utility">Utilitarios</button>
             <button data-filter="mobile">Mobile</button>
+            <button data-filter="game">Jogos</button>
         </div>
 
         <div class="grid" id="grid"></div>
@@ -145,6 +146,86 @@
                 cor: "#EF4444",
                 link: "https://github.com/Aboim/stock-medicamentos",
                 tags: ["desktop", "mobile"]
+            },
+            {
+                nome: "Agente AI",
+                descricao: "Assistente pessoal IA desktop com voz, comandos e integracao Google Gemini. Monitorizacao de sistema em tempo real.",
+                stack: "Python · Flet · Google Gemini · SpeechRecognition",
+                tipo: "desktop",
+                icone: "🤖",
+                cor: "#6366F1",
+                link: "https://github.com/Aboim/agente-ai",
+                tags: ["desktop", "ai"]
+            },
+            {
+                nome: "Gestao de Caixa e Stocks",
+                descricao: "Sistema completo de caixa e gestao de inventario com backend FastAPI e frontend Flet. Dashboard, Vendas, Devolucoes.",
+                stack: "Python · FastAPI · Flet · SQLAlchemy",
+                tipo: "desktop",
+                icone: "💰",
+                cor: "#10B981",
+                link: "https://github.com/Aboim/gestao-caixa-stocks",
+                tags: ["desktop", "fullstack"]
+            },
+            {
+                nome: "Gestao de Marcacoes",
+                descricao: "Sistema de agendamento multi-plataforma. Colecao de implementacoes em Flask, Django, FastAPI e Flet.",
+                stack: "FastAPI · Flet · Flask · Django · SQLite",
+                tipo: "desktop",
+                icone: "📅",
+                cor: "#F97316",
+                link: "https://github.com/Aboim/gestao-marcacoes",
+                tags: ["desktop", "fullstack", "web"]
+            },
+            {
+                nome: "Colecao de Jogos",
+                descricao: "Colecao de 11 jogos classicos em Python: Hangman, Space Invaders, Tetris, Sudoku, Car Game, Platformer e UNO.",
+                stack: "Python · Pygame · PyQt5 · Turtle · Flet",
+                tipo: "game",
+                icone: "🎮",
+                cor: "#A855F7",
+                link: "https://github.com/Aboim/jogos",
+                tags: ["game"]
+            },
+            {
+                nome: "Music Player",
+                descricao: "Leitor de musica desktop com interface Tkinter, suporte MP3, controlos completos e selecao de pasta.",
+                stack: "Python · Tkinter · Pygame",
+                tipo: "desktop",
+                icone: "🎵",
+                cor: "#EC4899",
+                link: "https://github.com/Aboim/music-player",
+                tags: ["desktop"]
+            },
+            {
+                nome: "NET Test",
+                descricao: "Utilitario de diagnostico de rede. Testa conectividade a internet e mostra configuracao de rede.",
+                stack: "Python · requests",
+                tipo: "utility",
+                icone: "🌐",
+                cor: "#3B82F6",
+                link: "https://github.com/Aboim/net-test",
+                tags: ["utility"]
+            },
+            {
+                nome: "Corrida Muppets",
+                descricao: "Jogo de corrida em Python Turtle com personagens do Muppet Show. Diversao garantida com musica tema!",
+                stack: "Python · Turtle · pydub",
+                tipo: "game",
+                icone: "🏁",
+                cor: "#22C55E",
+                link: "https://github.com/Aboim/tartarugas-ninja-corrida",
+                tags: ["game"]
+            },
+            {
+                nome: "InvestMind AI Trading Bot",
+                descricao: "Bot de trading automatizado com IA (Google Gemini). Analise de acoes, recomendacoes e portfolio tracking.",
+                stack: "Python · Flet · Google Gemini · yfinance",
+                tipo: "desktop",
+                icone: "📈",
+                cor: "#14B8A6",
+                link: "https://github.com/Aboim/trading-bot",
+                tags: ["desktop", "ai"]
             }
         ];
 
@@ -153,12 +234,12 @@
         const filters = document.getElementById('filters');
 
         function getTipoTag(tipo) {
-            const map = { web: 'tag-web', desktop: 'tag-desktop', utility: 'tag-utility', mobile: 'tag-mobile' };
+            const map = { web: 'tag-web', desktop: 'tag-desktop', utility: 'tag-utility', mobile: 'tag-mobile', game: 'tag-game' };
             return map[tipo] || 'tag-web';
         }
 
         function getTipoLabel(tipo) {
-            const map = { web: 'Web', desktop: 'Desktop', utility: 'Utilitario', mobile: 'Mobile' };
+            const map = { web: 'Web', desktop: 'Desktop', utility: 'Utilitario', mobile: 'Mobile', game: 'Jogo' };
             return map[tipo] || tipo;
         }
 
@@ -186,7 +267,7 @@
                     <p>${p.descricao}</p>
                     <div class="card-footer">
                         <span class="tag ${getTipoTag(p.tipo)}">${getTipoLabel(p.tipo)}</span>
-                        ${p.tags.filter(t => t !== p.tipo).map(t => `<span class="tag tag-${t === 'mobile' ? 'mobile' : t === 'web' ? 'web' : t === 'data' ? 'utility' : 'desktop'}">${t}</span>`).join('')}
+                        ${p.tags.filter(t => t !== p.tipo).map(t => `<span class="tag tag-${t === 'mobile' ? 'mobile' : t === 'web' ? 'web' : t === 'data' ? 'utility' : t === 'game' || t === 'ai' ? 'game' : t === 'fullstack' ? 'web' : 'desktop'}">${t}</span>`).join('')}
                     </div>
                     <div class="card-links">
                         <a href="${p.link}" target="_blank">GitHub</a>
