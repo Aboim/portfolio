@@ -15,7 +15,7 @@
         <header class="hero">
             <div class="hero-avatar">JA</div>
             <h1>Joao Aboim</h1>
-            <p class="tagline">Software Developer · Full-Stack · Python &amp; TypeScript</p>
+            <p class="tagline">Software Developer · Full-Stack · Python &amp; TypeScript · Rust</p>
             <div class="links">
                 <a href="https://github.com/Aboim" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/joão-aboim" target="_blank">LinkedIn</a>
@@ -23,7 +23,6 @@
                 <a href="#" class="btn-push" id="btnPush" onclick="pushAll(); return false;" title="Git push em todos os projectos">Push All</a>
             </div>
             <div id="pushMsg" class="push-msg" style="display:none;"></div>
-            </div>
         </header>
 
         <!-- Projects Section -->
@@ -41,201 +40,271 @@
         <div class="grid" id="grid"></div>
 
         <footer class="footer">
-            Feito com <span style="color:#FFD700">empenho</span> ·  2026
+            Feito com <span style="color:#FFD700">empenho</span> · 26 projectos · 2026
         </footer>
     </div>
 
     <script>
         const projectos = [
             {
+                nome: "Agente AI (JARVIS)",
+                descricao: "Assistente pessoal IA desktop com voz, comandos ReAct e integracao Google Gemini 2.0 Flash. 169 testes.",
+                stack: "Python · Flet · Google Gemini · SpeechRecognition · pycaw",
+                tipo: "desktop",
+                icone: "🤖",
+                cor: "#6366F1",
+                link: "#",
+                tags: ["desktop", "ai"]
+            },
+            {
+                nome: "Analisador de Logs",
+                descricao: "Ferramenta de analise de logs com auto-aprendizagem de padroes, detecao de anomalias e integracao Windows Event Viewer.",
+                stack: "Python · Flet · SQLite · PowerShell",
+                tipo: "utility",
+                icone: "📋",
+                cor: "#F59E0B",
+                link: "#",
+                tags: ["utility", "data"]
+            },
+            {
                 nome: "Barbearia Portuguesa",
-                descricao: "App web full-stack para gestao de barbearia com agendamento, barbeiros, servicos e lembretes SMS via Twilio.",
-                stack: "React · Express · Tailwind CSS · SQLite",
+                descricao: "App web full-stack para gestao de barbearia. Backend FastAPI + Express, frontend React, JWT auth, SMS Twilio.",
+                stack: "React · FastAPI · Express · Tailwind CSS · SQLite · Twilio",
                 tipo: "web",
                 icone: "💈",
                 cor: "#3B82F6",
-                link: "https://github.com/Aboim/barbearia-portuguesa",
+                link: "#",
                 tags: ["web", "fullstack"]
             },
             {
-                nome: "Combustivel",
-                descricao: "Directorio nacional de precos de combustiveis e carregadores eletricos com mapa Leaflet e filtros avancados.",
-                stack: "Vanilla JS · Python · Leaflet.js · SQLite",
+                nome: "FuelSmart Portugal",
+                descricao: "Directorio nacional de precos de combustiveis e carregadores EV. Mapa Leaflet + Svelte com filtros avancados e dados DGEG.",
+                stack: "Svelte · Express · Leaflet.js · SQLite · MarkerCluster",
                 tipo: "web",
                 icone: "⛽",
                 cor: "#F59E0B",
-                link: "https://github.com/Aboim/combustivel",
-                tags: ["web", "backend"]
+                link: "#",
+                tags: ["web", "fullstack"]
+            },
+            {
+                nome: "Comparador Supermercado",
+                descricao: "Compara precos entre Continente, Pingo Doce, Auchan e Minipreco. Scraping assincrono (aiohttp) com cache 24h e Cabaz Basico.",
+                stack: "Python · Flet · Playwright · aiohttp · SQLite",
+                tipo: "desktop",
+                icone: "🏪",
+                cor: "#FB923C",
+                link: "#",
+                tags: ["desktop", "data"]
             },
             {
                 nome: "Conversor Excel JSON",
-                descricao: "Utilitario client-side para converter Excel (.xlsx/.csv/.ods) em JSON com suporte multi-sheet.",
+                descricao: "Utilitario client-side drag-and-drop para converter Excel (.xlsx/.csv/.ods) em JSON. Multi-sheet, tema escuro.",
                 stack: "HTML · CSS · JavaScript · SheetJS",
                 tipo: "utility",
                 icone: "🔄",
                 cor: "#22C55E",
-                link: "https://github.com/Aboim/conversor-excel-json",
+                link: "#",
                 tags: ["utility", "web"]
             },
             {
+                nome: "Converter Imagens para PDF",
+                descricao: "Converte imagens (PNG, JPG, WEBP) para PDF agrupando por assunto com OCR Tesseract e deteccao inteligente de topicos.",
+                stack: "Python · Flet · Tesseract OCR · Pillow",
+                tipo: "utility",
+                icone: "🖼️",
+                cor: "#0EA5E9",
+                link: "#",
+                tags: ["utility", "ai"]
+            },
+            {
+                nome: "Copiar Ficheiros Telemovel",
+                descricao: "Utilitario Windows WPF/XAML para copiar ficheiros do PC para telemovel. Suporta ADB, MTP, Robocopy com barra de progresso.",
+                stack: "PowerShell · WPF/XAML · ADB · COM Shell",
+                tipo: "utility",
+                icone: "📱",
+                cor: "#06B6D4",
+                link: "#",
+                tags: ["utility", "mobile"]
+            },
+            {
                 nome: "Dashboard Unificado",
-                descricao: "Hub central para todos os projectos pessoais. Lanca cada app com um clique e mostra estatisticas rapidas.",
+                descricao: "Hub central Flet para lancar todos os 27 projectos pessoais com um clique. Filtros, estatisticas, design premium.",
                 stack: "Python · Flet",
                 tipo: "desktop",
                 icone: "📊",
                 cor: "#FFD700",
-                link: "https://github.com/Aboim/dashboard-unificado",
+                link: "#",
                 tags: ["desktop"]
             },
             {
-                nome: "EuroMilhoes",
-                descricao: "Analise e previsao do Euromilhoes com gerador inteligente de chaves baseado em estatisticas.",
-                stack: "Python · Flet · pandas · BeautifulSoup",
+                nome: "EuroMilhoes Premium Pro",
+                descricao: "Analise estatistica e geracao inteligente de chaves do Euromilhoes. Web scraping de resultados oficiais, pytest.",
+                stack: "Python · Flet · pandas · BeautifulSoup · SQLite",
                 tipo: "desktop",
                 icone: "🎰",
                 cor: "#FFD700",
-                link: "https://github.com/Aboim/euromilhoes",
+                link: "#",
                 tags: ["desktop", "data"]
             },
             {
                 nome: "FinTrack-AI",
-                descricao: "Gestor de financas pessoais com insights IA via Google Gemini. Cross-platform (Web, Desktop, Android).",
-                stack: "React · TypeScript · Electron · Capacitor",
+                descricao: "Gestor de financas pessoais com IA Gemini. Cross-platform: Web, Electron, Tauri (Rust 1.6MB DLL) e Android.",
+                stack: "React · TypeScript · Electron · Tauri (Rust) · Capacitor",
                 tipo: "desktop",
                 icone: "💰",
                 cor: "#8B5CF6",
-                link: "https://github.com/Aboim/fintrack-ai",
-                tags: ["desktop", "web", "mobile"]
+                link: "#",
+                tags: ["desktop", "web", "mobile", "ai"]
             },
             {
-                nome: "KINTO KMS",
-                descricao: "Dashboard de gestao de quilometragem para contratos KINTO com OCR, projecoes e export multiplos formatos.",
-                stack: "TypeScript · Electron · Tesseract.js · Chart.js",
+                nome: "Foto Optimizer",
+                descricao: "Otimizador de imagens completo: compressao, conversao HEIC, upscaling IA, deteccao de duplicados, metadados EXIF e ajustes.",
+                stack: "Python · Flet · OpenCV · Pillow · NumPy · SciPy",
                 tipo: "desktop",
-                icone: "🚗",
-                cor: "#06B6D4",
-                link: "https://github.com/Aboim/kinto-kms",
-                tags: ["desktop", "mobile"]
-            },
-            {
-                nome: "Lista de Compras",
-                descricao: "Listas de compras multiplas com categorizacao automatica, tracking de precos e suporte multi-idioma.",
-                stack: "Python · Flet · SQLite",
-                tipo: "desktop",
-                icone: "🛒",
+                icone: "📸",
                 cor: "#EC4899",
-                link: "https://github.com/Aboim/lista-compras",
-                tags: ["desktop", "mobile"]
-            },
-            {
-                nome: "Comparador Supermercado",
-                descricao: "Compara precos entre Continente, Pingo Doce, Auchan e outros. Detecta o supermercado mais barato para a tua lista.",
-                stack: "Python · Flet · SQLite",
-                tipo: "desktop",
-                icone: "🏪",
-                cor: "#FB923C",
-                link: "https://github.com/Aboim/comparador-supermercado",
-                tags: ["desktop"]
-            },
-            {
-                nome: "Stock Medicamentos",
-                descricao: "Gestao de stock de medicamentos com alertas de stock baixo, receita medica e build Android.",
-                stack: "Python · Flet · SQLite",
-                tipo: "desktop",
-                icone: "💊",
-                cor: "#EF4444",
-                link: "https://github.com/Aboim/stock-medicamentos",
-                tags: ["desktop", "mobile"]
-            },
-            {
-                nome: "Stock Medicamentos Android",
-                descricao: "Versao Android compilada do gestor de stock de medicamentos. APK pronto para instalar com suporte a publicacao na Play Store.",
-                stack: "Android · APK · AAB · WebIntoApp",
-                tipo: "mobile",
-                icone: "🤖",
-                cor: "#34D399",
-                link: "https://github.com/Aboim/stock-medicamentos",
-                tags: ["mobile"]
-            },
-            {
-                nome: "Agente AI",
-                descricao: "Assistente pessoal IA desktop com voz, comandos e integracao Google Gemini. Monitorizacao de sistema em tempo real.",
-                stack: "Python · Flet · Google Gemini · SpeechRecognition",
-                tipo: "desktop",
-                icone: "🤖",
-                cor: "#6366F1",
-                link: "https://github.com/Aboim/agente-ai",
+                link: "#",
                 tags: ["desktop", "ai"]
             },
             {
                 nome: "Gestao de Caixa e Stocks",
-                descricao: "Sistema completo de caixa e gestao de inventario com backend FastAPI e frontend Flet. Dashboard, Vendas, Devolucoes.",
-                stack: "Python · FastAPI · Flet · SQLAlchemy",
+                descricao: "Sistema POS completo com vendas, devolucoes, dashboard. Backend FastAPI + Frontend Flet + Web React. 32 testes.",
+                stack: "FastAPI · Flet · React · SQLAlchemy · SQLite · JWT",
                 tipo: "desktop",
-                icone: "💰",
+                icone: "💲",
                 cor: "#10B981",
-                link: "https://github.com/Aboim/gestao-caixa-stocks",
-                tags: ["desktop", "fullstack"]
+                link: "#",
+                tags: ["desktop", "web", "fullstack"]
             },
             {
                 nome: "Gestao de Marcacoes",
-                descricao: "Sistema de agendamento multi-plataforma. Colecao de implementacoes em Flask, Django, FastAPI e Flet.",
-                stack: "FastAPI · Flet · Flask · Django · SQLite",
+                descricao: "Sistema completo de agendamento para barbearia. Flask funcional (95% completo) + backend FastAPI opcional.",
+                stack: "Flask · FastAPI · Flet · SQLite · FlaskWebGUI",
                 tipo: "desktop",
                 icone: "📅",
                 cor: "#F97316",
-                link: "https://github.com/Aboim/gestao-marcacoes",
-                tags: ["desktop", "fullstack", "web"]
+                link: "#",
+                tags: ["desktop", "web", "fullstack"]
             },
             {
-                nome: "Colecao de Jogos",
-                descricao: "Colecao de 11 jogos classicos em Python: Hangman, Space Invaders, Tetris, Sudoku, Car Game, Platformer e UNO.",
-                stack: "Python · Pygame · PyQt5 · Turtle · Flet",
+                nome: "Stock Medicamentos",
+                descricao: "Gestao de stock de medicamentos com interface Flet, filtros, estatisticas e build APK Android.",
+                stack: "Python · Flet · JSON · jsonschema",
+                tipo: "desktop",
+                icone: "💊",
+                cor: "#EF4444",
+                link: "#",
+                tags: ["desktop", "mobile"]
+            },
+            {
+                nome: "Jogos Disponiveis",
+                descricao: "11 jogos classicos em Python: Hangman, Space Invaders (3 versoes), Tetris, Sudoku, Car Game, Platformer e UNO.",
+                stack: "Python · Pygame · Turtle · Flet",
                 tipo: "game",
                 icone: "🎮",
                 cor: "#A855F7",
-                link: "https://github.com/Aboim/jogos",
+                link: "#",
                 tags: ["game"]
             },
             {
+                nome: "KINTO KMS",
+                descricao: "Gestao de quilometragem para frotas KINTO. OCR, PDF, Excel. Electron + Tauri (Rust 1.1MB DLL). 23 comandos.",
+                stack: "TypeScript · Electron · Tauri (Rust) · Chart.js · Tesseract",
+                tipo: "desktop",
+                icone: "🚗",
+                cor: "#06B6D4",
+                link: "#",
+                tags: ["desktop", "mobile", "ai"]
+            },
+            {
+                nome: "Lista de Compras Premium",
+                descricao: "Listas de compras multiplas com categorizacao automatica, i18n (PT/EN/ES) e base de dados. 75 testes pytest.",
+                stack: "Python · Flet · SQLite",
+                tipo: "desktop",
+                icone: "🛒",
+                cor: "#EC4899",
+                link: "#",
+                tags: ["desktop", "mobile"]
+            },
+            {
                 nome: "Music Player",
-                descricao: "Leitor de musica desktop com interface Tkinter, suporte MP3, controlos completos e selecao de pasta.",
-                stack: "Python · Tkinter · Pygame",
+                descricao: "Leitor de musica moderno com Flet. Suporte MP3/WAV/FLAC/OGG, playlist, progresso e controlos completos.",
+                stack: "Python · Flet · Pygame · Mutagen",
                 tipo: "desktop",
                 icone: "🎵",
                 cor: "#EC4899",
-                link: "https://github.com/Aboim/music-player",
+                link: "#",
                 tags: ["desktop"]
             },
             {
                 nome: "NET Test",
-                descricao: "Utilitario de diagnostico de rede. Testa conectividade a internet e mostra configuracao de rede.",
+                descricao: "Utilitario de diagnostico de rede. Testa conectividade a internet e mostra configuracao IP completa.",
                 stack: "Python · requests",
                 tipo: "utility",
                 icone: "🌐",
                 cor: "#3B82F6",
-                link: "https://github.com/Aboim/net-test",
+                link: "#",
                 tags: ["utility"]
             },
             {
-                nome: "Corrida Muppets",
-                descricao: "Jogo de corrida em Python Turtle com personagens do Muppet Show. Diversao garantida com musica tema!",
+                nome: "Plant ID",
+                descricao: "Identificador de plantas com IA (Google Gemini). Tira foto e recebe nome cientifico, descricao e cuidados.",
+                stack: "Python · Flet · Google Gemini · OpenCV · flet-camera",
+                tipo: "desktop",
+                icone: "🌿",
+                cor: "#22C55E",
+                link: "#",
+                tags: ["desktop", "mobile", "ai"]
+            },
+            {
+                nome: "Portfolio Pessoal",
+                descricao: "Site estatico showcase de todos os projectos. Single-page com design premium, filtros e Push All via PowerShell.",
+                stack: "HTML · CSS · JavaScript · Python",
+                tipo: "web",
+                icone: "🌐",
+                cor: "#8B5CF6",
+                link: "#",
+                tags: ["web"]
+            },
+            {
+                nome: "PY to APK Template",
+                descricao: "Template para converter apps Python/Flet em APK Android com pyproject.toml pre-configurado e platform-tools.",
+                stack: "Python · Flet · Buildozer · ADB",
+                tipo: "utility",
+                icone: "📦",
+                cor: "#6B7280",
+                link: "#",
+                tags: ["utility", "mobile"]
+            },
+            {
+                nome: "Tartarugas Ninja Corrida",
+                descricao: "Jogo de corrida Python Turtle com tartarugas coloridas, efeitos sonoros e classificacao. Diversao garantida!",
                 stack: "Python · Turtle · pydub",
                 tipo: "game",
                 icone: "🏁",
                 cor: "#22C55E",
-                link: "https://github.com/Aboim/tartarugas-ninja-corrida",
+                link: "#",
                 tags: ["game"]
             },
             {
                 nome: "InvestMind AI Trading Bot",
-                descricao: "Bot de trading automatizado com IA (Google Gemini). Analise de acoes, recomendacoes e portfolio tracking.",
+                descricao: "Bot de trading com IA Gemini. Paper trading, backtesting, yfinance, analise de portfolio. 54 testes pytest.",
                 stack: "Python · Flet · Google Gemini · yfinance",
                 tipo: "desktop",
                 icone: "📈",
                 cor: "#14B8A6",
-                link: "https://github.com/Aboim/trading-bot",
+                link: "#",
                 tags: ["desktop", "ai"]
+            },
+            {
+                nome: "FinTrack Analytics",
+                descricao: "Pipeline ETL e dashboard Streamlit para analise de financas pessoais. Relatorios Excel, graficos Plotly, CI/CD GitHub Actions.",
+                stack: "Python · Pandas · Streamlit · Plotly · Excel · GitHub Actions",
+                tipo: "desktop",
+                icone: "📊",
+                cor: "#6366F1",
+                link: "#",
+                tags: ["desktop", "web", "data"]
             }
         ];
 
@@ -264,7 +333,18 @@
             filtrados.forEach((p, i) => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.style.animationDelay = `${i * 50}ms`;
+                card.style.animationDelay = `${i * 40}ms`;
+
+                const uniqueTags = p.tags.filter(t => t !== p.tipo);
+                const tagsHtml = uniqueTags.map(t => {
+                    let tagClass = 'tag-desktop';
+                    if (t === 'web') tagClass = 'tag-web';
+                    else if (t === 'mobile') tagClass = 'tag-mobile';
+                    else if (t === 'utility' || t === 'data') tagClass = 'tag-utility';
+                    else if (t === 'game' || t === 'ai') tagClass = 'tag-game';
+                    else if (t === 'fullstack') tagClass = 'tag-web';
+                    return `<span class="tag ${tagClass}">${t}</span>`;
+                }).join('');
 
                 card.innerHTML = `
                     <div class="card-header">
@@ -277,10 +357,7 @@
                     <p>${p.descricao}</p>
                     <div class="card-footer">
                         <span class="tag ${getTipoTag(p.tipo)}">${getTipoLabel(p.tipo)}</span>
-                        ${p.tags.filter(t => t !== p.tipo).map(t => `<span class="tag tag-${t === 'mobile' ? 'mobile' : t === 'web' ? 'web' : t === 'data' ? 'utility' : t === 'game' || t === 'ai' ? 'game' : t === 'fullstack' ? 'web' : 'desktop'}">${t}</span>`).join('')}
-                    </div>
-                    <div class="card-links">
-                        <a href="${p.link}" target="_blank">GitHub</a>
+                        ${tagsHtml}
                     </div>
                 `;
                 grid.appendChild(card);
